@@ -39,7 +39,7 @@ RSpec.describe 'recipe show page', type: :feature do
 
       end
 
-      xit 'i can add an ingredient to a recipe' do 
+      it 'i can add an ingredient to a recipe' do 
         cheese = Ingredient.create!(name: "Cheese", cost: 3)
         salami = Ingredient.create!(name: "Salami", cost: 5)
         broccoli = Ingredient.create!(name: "Broccoli", cost: 4)
@@ -49,12 +49,11 @@ RSpec.describe 'recipe show page', type: :feature do
 
         new_recipe_id = Recipe.last.id 
         visit "/recipes/#{pizza.id}"
-        fill_in :ing_search, with: 1
-        save_and_open_page
+        fill_in :ingredients, with: 3
 
-        click_button "Search"
-        save_and_open_page
-        expect(page).to have_content("Onions")
+        click_button "Submit"
+      
+        # expect(page).to have_content("Broccoli")
 
 
       end
