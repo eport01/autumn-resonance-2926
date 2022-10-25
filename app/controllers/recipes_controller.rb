@@ -1,8 +1,8 @@
 class RecipesController < ApplicationController
   def show 
     @recipe = Recipe.find(params[:id])
-    if params[:commit] == "Search"
-      @search_ingredients = Ingredient.find(params[:search_ingredients])
+    if params[:ingredient_id] 
+      RecipeIngredient.create!(recipe: @recipe, ingredient: Ingredient.find(params[:ingredient_id].to_i))
 
     end
   end

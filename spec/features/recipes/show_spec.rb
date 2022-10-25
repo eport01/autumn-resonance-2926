@@ -49,11 +49,11 @@ RSpec.describe 'recipe show page', type: :feature do
 
         new_recipe_id = Recipe.last.id 
         visit "/recipes/#{pizza.id}"
-        fill_in :ingredients, with: 3
+        fill_in :ingredient_id, with: "#{broccoli.id}"
 
         click_button "Submit"
       
-        # expect(page).to have_content("Broccoli")
+        expect(page).to have_content("Broccoli")
 
 
       end
